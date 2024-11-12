@@ -51,44 +51,44 @@ RESTON sigue una arquitectura MVC (Modelo-Vista-Controlador) robusta y utiliza p
 
 Asegúrate de tener instalado en tu sistema:
 
-# 0. Iniciar el Laragon
+### 0. Iniciar el Laragon
 
-# 1. Navegar a la carpeta www de Laragon
+### 1. Navegar a la carpeta www de Laragon
 cd C:\laragon\www
 
-# 2. Clonar el repositorio en Laragon
+### 2. Clonar el repositorio en Laragon
 git clone https://github.com/Andres241218/reston
 Abrimos el proyecto en nuestro editor
 Cd C:\laragon\www\reston\example-app\example-app
 
-# 3. Instalar dependencias de PHP con Composer
+### 3. Instalar dependencias de PHP con Composer
 composer install
 
-# 4. Crear y configurar el archivo .env
+### 4. Crear y configurar el archivo .env
 cp .env.example .env
 
-# 5. Importar la base de datos en heidiSQL (Opción de laragon deBase de Datos)
+### 5. Importar la base de datos en heidiSQL (Opción de laragon deBase de Datos)
 Abrir
 Crear nueva base de datos
 Archivo (reston.zip)
 Ejecutar archivo sql (descomprimido)
 
-# 6. Generar la clave de aplicación
+### 6. Generar la clave de aplicación
 php artisan key:generate
 
-# 7. Cambiar el nombre de databese en el .env 
-DB_DATABASE=reston
+### 7. Cambiar el nombre de databese en el .env 
+DB_DATABASE=laravel
 
-# 8. Instalar dependencias de Node.js y compilar assets 
+### 8. Instalar dependencias de Node.js y compilar assets 
 npm install
 
-# 9. Ejecutar las migraciones
+### 9. Ejecutar las migraciones
 php artisan migrate
 
-# 10. Compilar assets
+### 10. Compilar assets
 npm run dev
 
-# 11. Iniciar el servidor de Laravel
+### 11. Iniciar el servidor de Laravel
 php artisan serve
 
 
