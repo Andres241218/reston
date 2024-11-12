@@ -184,20 +184,35 @@ php artisan serve
 ```
 reston/
 ├── app/
-│   ├── Http/Controllers/
-│   ├── Models/
+│   ├── Console/
+│   ├── Exceptions/
+│   └── Http/Controllers/
+│   └── Models/
+│   └── Policies/
 │   └── Providers/
+│   └── View/
 ├── database/
-│   ├── migrations/
+│   ├── factories/
+│   └── migrations/
 │   └── seeders/
 ├── public/
-│   ├── css/
+│   ├── build/
+│   └── css/
+│   └── fonts/
+│   └── images/
 │   └── js/
+│   └── storage/
 ├── resources/
-│   ├── views/
-│   └── js/
+│   ├── css/
+│   └── js/    
+│   └── views/
 └── routes/
+    ├── api.php
+    └── auth.php
+    └── channels.php
+    └── console.php
     └── web.php
+
 ```
 
 ## 🤝 Contribución
@@ -216,7 +231,7 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE.md` para 
 
 ## 📞 Contacto
 
-👨‍💻 Camilo Hernández - [GitHub](https://github.com/osicasta)
+👨‍💻Oscar Castaño - [GitHub](https://github.com/osicasta)
 
 🔗 Link del proyecto:(https://github.com/Andres241218/reston)
 
