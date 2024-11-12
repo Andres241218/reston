@@ -363,7 +363,6 @@
   </section>
 
   <!-- end offer section -->
-
 <!-- food section -->
 <section class="food_section layout_padding-bottom">
     <div class="container">
@@ -377,10 +376,10 @@
         <div class="filters_menu">
             <ul class="filters_menu">
                 <li class="active" data-filter="*" onclick="filterCategory('*')">All</li>
-                <li data-filter=".burger" onclick="filterCategory('.burger')">hamburguesa</li>
-                <li data-filter=".pizza" onclick="filterCategory('.pizza')">Pizza</li>
-                <li data-filter=".pasta" onclick="filterCategory('.pasta')">Pasta</li>
-                <li data-filter=".fries" onclick="filterCategory('.fries')">papas</li>
+                <li data-filter="hamburguesa" onclick="filterCategory('hamburguesa')">hamburguesa</li>
+                <li data-filter="pizza" onclick="filterCategory('pizza')">Pizza</li>
+                <li data-filter="pasta" onclick="filterCategory('pasta')">Pasta</li>
+                <li data-filter="papas" onclick="filterCategory('papas')">papas</li>
             </ul>
         </div>
 
@@ -418,16 +417,20 @@
 
 <script>
     function filterCategory(category) {
-        const products = document.querySelectorAll('.grid .col-sm-6');
+        const products = document.querySelectorAll('.grid .col-sm-6, .grid .col-lg-4');
 
         products.forEach(product => {
             // Mostrar u ocultar productos basados en la categoría seleccionada
-            if (category === '*' || product.classList.contains(category.substring(1))) {
+            if (category === '*' || product.classList.contains(category)) {
                 product.style.display = ""; // Mostrar producto
             } else {
                 product.style.display = "none"; // Ocultar producto
             }
         });
+
+        // Actualizar la clase 'active' en los filtros
+        document.querySelectorAll('.filters_menu li').forEach(li => li.classList.remove('active'));
+        document.querySelector(`[data-filter="${category}"]`).classList.add('active');
     }
 </script>
 

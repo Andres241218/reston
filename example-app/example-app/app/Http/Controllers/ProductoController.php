@@ -24,9 +24,10 @@ class ProductoController extends Controller
     // Mostrar todos los productos en el menú
     public function showMenu()
     {
-        $productos = Producto::all(); // Obtén los productos de la base de datos
-        return view('pag.menu', compact('productos')); // Devuelve la vista 'pag.menu'
+        $productos = Producto::paginate(6); // 6 productos por página
+        return view('pag.menu', compact('productos')); // Asegúrate de pasar 'productos' a la vista
     }
+    
 
     public function store(Request $request)
     {
@@ -37,22 +38,28 @@ class ProductoController extends Controller
             'price' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación para la imagen
         ]);
-
+    
+        // Renombrar la imagen para evitar duplicados (opcional)
+        $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
+    
         // Guardar la imagen en public/images
-        $imagePath = $request->file('image')->move(public_path('images'), $request->file('image')->getClientOriginalName());
-
+        $imagePath = $request->file('image')->move(public_path('images'), $imageName);
+    
         // Crear un nuevo producto en la base de datos
         Producto::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => 'images/' . $request->file('image')->getClientOriginalName(), // Guardar la ruta de la imagen
+            'image' => 'images/' . $imageName, // Solo 'images/' y el nombre de archivo
         ]);
-
+        
+    
         // Redirigir al dashboard con un mensaje de éxito
         return redirect()->route('dashboard')
-            ->with('success', 'Producto creado con éxito.');
+            ->with('success', 'Producto agregado exitosamente.');
     }
+    
+    
 
     // Mostrar el formulario de edición de un producto
     public function edit(Producto $producto)

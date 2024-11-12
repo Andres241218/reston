@@ -12,10 +12,12 @@ class UserController extends Controller
     public function index()
     {
         $this->authorize('viewAny', User::class); // Verificar si el usuario puede ver la lista
-
-        $usuarios = User::all(); // Obtiene todos los usuarios
-        return view('dashboard', compact('usuarios')); // Pasar solo los usuarios a la vista
+    
+        $user = User::all(); // Obtiene todos los usuarios
+        return view('dashboard', compact('usuarios')); // Cambiar a 'usuarios' si esperas ese nombre en la vista
     }
+    
+    
 
     // Mostrar el formulario para crear un nuevo usuario
     public function create()
@@ -49,9 +51,9 @@ class UserController extends Controller
     
 
     // Mostrar el formulario de edición de un usuario
-    public function edit(User $usuario)
+    public function edit(User $user)
     {
-        $this->authorize('update', $usuario); // Verificar si el usuario puede editar
+        $this->authorize('update', $user); // Verificar si el usuario puede editar
 
         return view('usuarios.edit', compact('usuario')); // Vista de edición
     }
@@ -86,12 +88,12 @@ class UserController extends Controller
     }
 
     // Eliminar un usuario
-    public function destroy(User $usuario)
+    public function destroy(User $user)
     {
-        $this->authorize('delete', $usuario); // Verificar si el usuario puede eliminar
+        $this->authorize('delete', $user); // Verificar si el usuario puede eliminar
 
         // Eliminar usuario
-        $usuario->delete();
+        $user->delete();
 
         // Redirigir con mensaje de éxito
         return redirect()->route('dashboard')

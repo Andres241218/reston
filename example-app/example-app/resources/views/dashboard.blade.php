@@ -2,12 +2,20 @@
 
 @section('content')
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <script src="{{ asset('js/secciones.js') }}" defer></script>
 </head>
 <body>
-  
+<!-- Mostrar mensaje de éxito -->
+      @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif <!-- Contenido del dashboard... -->
 <!-- Header con Menú de Navegación -->
+
 <header class="header_section">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container">
@@ -44,6 +52,8 @@
     </div>
 </header>
 
+ <!-- Scripts de Bootstrap 5 -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <div class="row">
       <!-- Sección de Comentarios -->

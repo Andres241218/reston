@@ -150,23 +150,17 @@
 
         <div class="filters-content">
             <div class="row grid">
-                @foreach($productos as $producto) <!-- Suponiendo que pasaste una variable 'productos' a la vista -->
-                    <div class="col-sm-6 col-lg-4 all {{ $producto->categoria }}"> <!-- Asumiendo que cada producto tiene una categoría -->
+                @foreach($productos as $producto)
+                    <div class="col-sm-6 col-lg-4 all {{ $producto->categoria }}">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('storage/' . $producto->image) }}" alt="{{ $producto->name }}" style="width: auto; height: auto;"> <!-- Ruta de la imagen -->
+                            <img src="{{ asset($producto->image) }}" alt="{{ $producto->name }}" style="width: auto; height: auto;">
                             </div>
                             <div class="detail-box">
-                                <h5>
-                                    {{ $producto->name }} <!-- Nombre del producto -->
-                                </h5>
-                                <p>
-                                    {{ $producto->description }} <!-- Descripción del producto -->
-                                </p>
+                                <h5>{{ $producto->name }}</h5>
+                                <p>{{ $producto->description }}</p>
                                 <div class="options">
-                                    <h6>
-                                        ${{ number_format($producto->price, 2) }} <!-- Precio del producto, con formato -->
-                                    </h6>
+                                    <h6>${{ number_format($producto->price, 2) }}</h6>
                                     <a href="">
                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                                             <g>
@@ -198,8 +192,15 @@
                 @endforeach
             </div>
         </div>
+
+<!-- Paginación -->
+<div class="pagination-container d-flex justify-content-center mt-4">
+    {{ $productos->links('custom') }}
+</div>
+
     </div>
 </section>
+
 
  <!-- footer section -->
  <footer class="footer_section">
